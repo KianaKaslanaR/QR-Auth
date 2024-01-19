@@ -3,22 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Receiver</title>
+  <title>Data and Browser Info Receiver</title>
 </head>
 <body>
-  <h1>Data Receiver</h1>
+  <h1>Data and Browser Info Receiver</h1>
   <script>
     // 获取URL中的查询参数
     const urlParams = new URLSearchParams(window.location.search);
     // 通过 'data' 参数获取传入的数据
     const inputData = urlParams.get('data');
     
-    // 在页面上显示数据
+    // 获取浏览器信息
+    const browserInfo = {
+      name: window.navigator.appName,
+      version: window.navigator.appVersion,
+      userAgent: window.navigator.userAgent,
+      platform: window.navigator.platform
+    };
+
+    // 在页面上显示数据和浏览器信息
     if (inputData) {
       document.body.innerHTML += `<p>传入的数据是: ${inputData}</p>`;
     } else {
       document.body.innerHTML += `<p>未传入数据</p>`;
     }
+
+    document.body.innerHTML += `<p>浏览器信息：</p>`;
+    document.body.innerHTML += `<ul>
+                    <li>浏览器名称: ${browserInfo.name}</li>
+                    <li>浏览器版本: ${browserInfo.version}</li>
+                    <li>User Agent: ${browserInfo.userAgent}</li>
+                    <li>平台: ${browserInfo.platform}</li>
+                  </ul>`;
   </script>
 </body>
 </html>
