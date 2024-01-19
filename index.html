@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data and Browser Info Receiver</title>
+  <title>Data and Device Info Receiver</title>
 </head>
 <body>
-  <h1>Data and Browser Info Receiver</h1>
+  <h1>Data and Device Info Receiver</h1>
   <script>
     // 获取URL中的查询参数
     const urlParams = new URLSearchParams(window.location.search);
@@ -21,20 +21,33 @@
       platform: window.navigator.platform
     };
 
-    // 在页面上显示数据和浏览器信息
-    if (inputData) {
-      document.body.innerHTML += `<p>传入的数据是: ${inputData}</p>`;
-    } else {
-      document.body.innerHTML += `<p>未传入数据</p>`;
-    }
+    // 筛选特定User Agent
+    const user_agent = browserInfo.userAgent;
+    if (user_agent.includes("com.alibaba.android.rimet")) {
+      const dingTalkIndex = user_agent.indexOf("DingTalk");
+      if (dingTalkIndex !== -1) {
+        const dingTalkInfo = user_agent.substring(dingTalkIndex);
+        const versionIndex = dingTalkInfo.lastIndexOf("/");
+        const version = versionIndex !== -1 ? dingTalkInfo.substring(versionIndex + 1) : "未知版本";
 
-    document.body.innerHTML += `<p>浏览器信息：</p>`;
-    document.body.innerHTML += `<ul>
-                    <li>浏览器名称: ${browserInfo.name}</li>
-                    <li>浏览器版本: ${browserInfo.version}</li>
-                    <li>User Agent: ${browserInfo.userAgent}</li>
-                    <li>平台: ${browserInfo.platform}</li>
-                  </ul>`;
+        // 在页面上显示数据、浏览器信息和设备信息
+        document.body.innerHTML += `<p>传入的数据是: ${inputData || '未传入数据'}</p>`;
+        document.body.innerHTML += `<p>浏览器信息：</p>`;
+        document.body.innerHTML += `<ul>
+                        <li>浏览器名称: ${browserInfo.name}</li>
+                        <li>浏览器版本: ${browserInfo.version}</li>
+                        <li>User Agent: ${browserInfo.userAgent}</li>
+                        <li>平台: ${browserInfo.platform}</li>
+                      </ul>`;
+        document.body.innerHTML += `<p>设备信息：</p>`;
+        document.body.innerHTML += `<ul>
+                        <li>设备名称: ${dingTalkInfo}</li>
+                        <li>安卓版本: ${version}</li>
+                      </ul>`;
+      }
+    } else {
+      document.body.innerHTML += `<p>未检测到特定User Agent</p>`;
+    }
   </script>
 </body>
 </html>
