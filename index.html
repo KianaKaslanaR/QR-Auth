@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,11 +37,11 @@
         const osInfo = osIndexEnd !== -1 ? user_agent.substring(osIndexStart, osIndexEnd) : "未知操作系统";
 
         // 在页面上显示用户信息
-        document.body.innerHTML += `<p>传入的key是: ${keyData || '未传入key'}</p>`;
-        document.body.innerHTML += `<p>传入的设备名称是: ${deviceName || '未传入设备名称'}</p>`;
         document.body.innerHTML += `<p>您正在使用${deviceInfo}进行认证操作</p>`;
         document.body.innerHTML += `<p>您的操作系统：${osInfo}</p>`;
-        document.body.innerHTML += `<p>您的DingTalk版本：${version}</p>`;
+        document.body.innerHTML += `<p>您的DingTalk版本：${version}</p> <br><br>`;
+        document.body.innerHTML += `<p>您在这为</p> <h2> ${deviceName || '未传入设备名称'}</h2> <p> 进行认证</p>`;
+        document.body.innerHTML += `<p>认证密钥🔐:</p> <h2> ${keyData || '未传入key'}</h2>`;
       }
     } else {
       // 如果未检测到特定User Agent，跳转到 about:blank
