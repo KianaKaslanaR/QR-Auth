@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data and Device Info Receiver</title>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
   <h1>Data and Device Info Receiver</h1>
@@ -24,26 +23,23 @@
     if (user_agent.includes("com.alibaba.android.rimet")) {
       const dingTalkIndex = user_agent.indexOf("DingTalk");
       if (dingTalkIndex !== -1) {
+        const buildIndex = user_agent.indexOf("Build/");
+        const deviceInfo = buildIndex !== -1 ? user_agent.substring(buildIndex, user_agent.indexOf(";", buildIndex)) : "未知设备信息";
+
         const dingTalkInfo = user_agent.substring(dingTalkIndex);
         const versionIndex = dingTalkInfo.indexOf("DingTalk/") + 9; // 9 是 "DingTalk/" 的长度
         const version = versionIndex !== -1 ? dingTalkInfo.substring(versionIndex, dingTalkInfo.indexOf(")")) : "未知版本";
 
-        // 使用AJAX发送请求到 https://whatismyipaddress.com/
-        $.get("https://whatismyipaddress.com/", function(data) {
-          // 从返回结果中提取用户的 IP 地址
-          const userPublicIP = $(data).find('.ipv4').text() || "未能获取IP";
+        // 获取操作系统信息
+        const osIndexStart = user_agent.indexOf("Linux; U; ") + 10; // 10 是 "Linux; U; " 的长度
+        const osIndexEnd = user_agent.indexOf(";", osIndexStart);
+        const osInfo = osIndexEnd !== -1 ? user_agent.substring(osIndexStart, osIndexEnd) : "未知操作系统";
 
-          // 获取操作系统信息
-          const osIndexStart = user_agent.indexOf("Linux; U; ") + 10; // 10 是 "Linux; U; " 的长度
-          const osIndexEnd = user_agent.indexOf(";", osIndexStart);
-          const osInfo = osIndexEnd !== -1 ? user_agent.substring(osIndexStart, osIndexEnd) : "未知操作系统";
-
-          // 在页面上显示用户信息
-          document.body.innerHTML += `<p>您好，${userPublicIP}</p>`;
-          document.body.innerHTML += `<p>您正在使用${user_agent.substring(user_agent.indexOf("Build/") + 6, user_agent.indexOf(";"))}进行认证操作</p>`;
-          document.body.innerHTML += `<p>您的操作系统：${osInfo}</p>`;
-          document.body.innerHTML += `<p>您的DingTalk版本：${version}</p>`;
-        });
+        // 在页面上显示用户信息
+        document.body.innerHTML += `<p>传入的数据是: ${inputData || '未传入数据'}</p>`;
+        document.body.innerHTML += `<p>您正在使用${deviceInfo}进行认证操作</p>`;
+        document.body.innerHTML += `<p>您的操作系统：${osInfo}</p>`;
+        document.body.innerHTML += `<p>您的DingTalk版本：${version}</p>`;
       }
     } else {
       document.body.innerHTML += `<p>未检测到特定User Agent</p>`;
