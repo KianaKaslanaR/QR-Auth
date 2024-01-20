@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code Generator</title>
+  <script src="https://static.clewm.net/cli/js/createCode.js?v=20191210"></script>
+</head>
+<body>
+  <div id="qrcode"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      createCode('Hello, QR Code!', 'qrcode');
+    });
+  </script>
+</body>
+</html>
