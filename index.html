@@ -11,15 +11,25 @@
       background: url('background.png') center/cover fixed no-repeat; /* 修改背景显示方式 */
     }
 
+    .background-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.6); /* 半透明白色背景，透明度为0.6 */
+      z-index: -1; /* 将该层放在最底层 */
+    }
+
     .info-container {
-      position: relative; /* 相对定位 */
-      z-index: 1; /* 设置层级，使其位于下层 */
-      background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+      background-color: transparent; /* 透明背景 */
       border-radius: 15px; /* 圆角矩形边框 */
       padding: 20px;
       margin: 20px;
       max-width: 600px; /* 设置最大宽度，使内容不过分拉宽 */
       margin: auto; /* 居中显示 */
+      position: relative; /* 相对定位，使其相对于父元素 .background-overlay 定位 */
+      z-index: 1; /* 将该层放在上层 */
     }
 
     p, h2 {
@@ -29,6 +39,7 @@
   </style>
 </head>
 <body>
+  <div class="background-overlay"></div>
   <div class="info-container">
     <script>
       // 获取URL中的查询参数
