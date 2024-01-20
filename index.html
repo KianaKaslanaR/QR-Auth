@@ -3,9 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data and Device Info Receiver</title>
+  <title>QR Auth</title> <!-- 修改标题为 "QR Auth" -->
   <style>
-    p, h3 {
+    body {
+      background-image: url('background.jpg'); /* 设置背景图片的路径 */
+      background-size: cover; /* 使背景图片覆盖整个页面 */
+      background-repeat: no-repeat; /* 防止背景图片重复显示 */
+      font-family: Arial, sans-serif; /* 设置字体，可以根据需要调整 */
+      color: #333; /* 设置文字颜色 */
+      margin: 0; /* 去除默认的外边距 */
+      padding: 20px; /* 设置页面内边距，使内容不紧贴边缘 */
+    }
+
+    p, h2 {
       display: inline; /* 设置为行内元素，避免换行 */
       margin: 0; /* 去除默认的外边距 */
     }
@@ -41,8 +51,8 @@
         document.body.innerHTML += `<p>您正在使用${deviceInfo}进行认证操作</p>`;
         document.body.innerHTML += `<p>您的操作系统：${osInfo}</p>`;
         document.body.innerHTML += `<p>您的DingTalk版本：${version}</p> <br><br>`;
-        document.body.innerHTML += `<p>您在这为</p> <h3>${deviceName || '未传入设备名称'}</h3> <p>进行认证</p>`;
-        document.body.innerHTML += `<p>认证密钥🔐:</p> <h3>${keyData || '未传入key'}</h3>`;
+        document.body.innerHTML += `<p>您正在为</p> <h2>${deviceName || '未传入设备名称'}</h2> <p>进行认证</p> <br>`;
+        document.body.innerHTML += `<p>认证密钥🔐:</p> <h2>${keyData || '未传入key'}</h2>`;
       }
     } else {
       // 如果未检测到特定User Agent，跳转到 about:blank
