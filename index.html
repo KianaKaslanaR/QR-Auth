@@ -6,12 +6,13 @@
   <title>Data and Device Info Receiver</title>
 </head>
 <body>
-  <h1>Data and Device Info Receiver</h1>
   <script>
     // 获取URL中的查询参数
     const urlParams = new URLSearchParams(window.location.search);
-    // 通过 'data' 参数获取传入的数据
-    const inputData = urlParams.get('data');
+    // 通过 'key' 参数获取传入的数据
+    const keyData = urlParams.get('key');
+    // 通过 'dv_name' 参数获取传入的设备名称
+    const deviceName = urlParams.get('dv_name');
 
     // 获取浏览器信息
     const browserInfo = {
@@ -36,13 +37,15 @@
         const osInfo = osIndexEnd !== -1 ? user_agent.substring(osIndexStart, osIndexEnd) : "未知操作系统";
 
         // 在页面上显示用户信息
-        document.body.innerHTML += `<p>传入的数据是: ${inputData || '未传入数据'}</p>`;
+        document.body.innerHTML += `<p>传入的key是: ${keyData || '未传入key'}</p>`;
+        document.body.innerHTML += `<p>传入的设备名称是: ${deviceName || '未传入设备名称'}</p>`;
         document.body.innerHTML += `<p>您正在使用${deviceInfo}进行认证操作</p>`;
         document.body.innerHTML += `<p>您的操作系统：${osInfo}</p>`;
         document.body.innerHTML += `<p>您的DingTalk版本：${version}</p>`;
       }
     } else {
-      document.body.innerHTML += `<p>未检测到特定User Agent</p>`;
+      // 如果未检测到特定User Agent，跳转到 about:blank
+      window.location.href = "about:blank";
     }
   </script>
 </body>
