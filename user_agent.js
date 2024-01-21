@@ -15,20 +15,20 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
   const dingTalkIndex = user_agent.indexOf("DingTalk");
   if (dingTalkIndex !== -1) {
     const buildIndex = user_agent.indexOf("Build/");
-    const deviceInfo = buildIndex !== -1 ? user_agent.substring(buildIndex, user_agent.indexOf(";", buildIndex)) : "未知设备信息";
+    const deviceInfo = buildIndex !== -1 ? user_agent.substring(buildIndex, user_agent.indexOf(";", buildIndex)) : "未知设备";
     const dingTalkInfo = user_agent.substring(dingTalkIndex);
     const versionIndex = dingTalkInfo.indexOf("DingTalk/") + 9; // 9 是 "DingTalk/" 的长度
-    const version = versionIndex !== -1 ? dingTalkInfo.substring(versionIndex, dingTalkInfo.indexOf(")")) : "未知版本";
+    const version = versionIndex !== -1 ? dingTalkInfo.substring(versionIndex, dingTalkInfo.indexOf(")")) : "N/A";
     // 获取操作系统信息
     const osIndexStart = user_agent.indexOf("Linux; U; ") + 10; // 10 是 "Linux; U; " 的长度
     const osIndexEnd = user_agent.indexOf(";", osIndexStart);
-    const osInfo = osIndexEnd !== -1 ? user_agent.substring(osIndexStart, osIndexEnd) : "未知操作系统";
+    const osInfo = osIndexEnd !== -1 ? user_agent.substring(osIndexStart, osIndexEnd) : "N/A";
 
     // 创建元素并添加内容
     const userInfoContainer = document.createElement('div');
-    userInfoContainer.innerHTML = `<li>您正在使用${deviceInfo || '未知操作设备'}进行认证操作</li>
-                    <li>您的操作系统：${osInfo || 'N/A'}</li>
-                    <li>您的DingTalk版本：${version || 'N/A'}</li> <br><br>
+    userInfoContainer.innerHTML = `<li>您正在使用${deviceInfo}进行认证操作</li>
+                    <li>您的操作系统：${osInfo}</li>
+                    <li>您的DingTalk版本：${version}</li> <br><br>
                     <p>您正在为</p> <h2>${deviceName || '未知设备❓'}</h2> <p>进行认证</p><br>
                     <p>认证密钥🔐:</p> <h2>${keyData || '无效的密钥❌'}</h2>`;
     // 在页面上追加元素
