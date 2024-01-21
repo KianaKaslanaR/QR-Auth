@@ -26,15 +26,15 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
 
     // 创建元素并添加内容
     const userInfoContainer = document.createElement('div');
-    userInfoContainer.innerHTML = `<p>您正在使用${deviceInfo}进行认证操作</p>
-                    <p>您的操作系统：${osInfo}</p>
-                    <p>您的DingTalk版本：${version}</p> <br><br>
-                    <li>您正在为</li> <h2>${deviceName || '未传入设备名称'}</h2> <li>进行认证</li><br>
-                    <li>认证密钥🔐:</li> <h2>${keyData || '未传入key'}</h2>`;
+    userInfoContainer.innerHTML = `<li>您正在使用${deviceInfo}进行认证操作</li>
+                    <li>您的操作系统：${osInfo}</li>
+                    <li>您的DingTalk版本：${version}</li> <br><br>
+                    <p>您正在为</p> <h2>${deviceName || '未传入设备名称'}</h2> <p>进行认证</p><br>
+                    <p>认证密钥🔐:</p> <h2>${keyData || '未传入key'}</h2>`;
     // 在页面上追加元素
     document.body.appendChild(userInfoContainer);
   }
 } else {
   // 如果未检测到特定User Agent，跳转到 about:blank
-  window.location.href = "about:blank";
-                      }
+  //window.location.href = "about:blank";
+}
