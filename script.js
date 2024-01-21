@@ -25,12 +25,12 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
     const osInfo = osIndexEnd !== -1 ? user_agent.substring(osIndexStart, osIndexEnd) : "未知操作系统";
 
     // 创建元素并添加内容
-    const userInfoContainer = document.createElement('div');
-    userInfoContainer.innerHTML = `<li>您正在使用${deviceInfo}进行认证操作</li>
-                    <li>您的操作系统：${osInfo}</li>
-                    <li>您的DingTalk版本：${version}</li> <br><br>
-                    <p>您正在为</p> <h2>${deviceName || '未传入设备名称'}</h2> <p>进行认证</p><br>
-                    <p>认证密钥🔐:</p> <h2>${keyData || '未传入key'}</h2>`;
+    const userInfoContainer = document.createElement('');
+    userInfoContainer.innerHTML = `<li>您正在使用${deviceInfo || '未知操作设备'}进行认证操作</li>
+                    <li>您的操作系统：${osInfo || 'N/A'}</li>
+                    <li>您的DingTalk版本：${version || 'N/A'}</li> <br><br>
+                    <p>您正在为</p> <h2>${deviceName || '未知设备❓'}</h2> <p>进行认证</p><br>
+                    <p>认证密钥🔐:</p> <h2>${keyData || '无效的密钥❌'}</h2>`;
     // 在页面上追加元素
     document.body.appendChild(userInfoContainer);
   }
