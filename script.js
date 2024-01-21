@@ -36,5 +36,5 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
   }
 } else {
   // 如果未检测到特定User Agent，跳转到 about:blank
-  //window.location.href = "about:blank";
+  window.location.href = "about:blank";
 }
