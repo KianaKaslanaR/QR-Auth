@@ -25,7 +25,7 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
     const osInfo = osIndexEnd !== -1 ? user_agent.substring(osIndexStart, osIndexEnd) : "未知操作系统";
 
     // 创建元素并添加内容
-    const userInfoContainer = document.createElement('');
+    const userInfoContainer = document.createElement('div');
     userInfoContainer.innerHTML = `<li>您正在使用${deviceInfo || '未知操作设备'}进行认证操作</li>
                     <li>您的操作系统：${osInfo || 'N/A'}</li>
                     <li>您的DingTalk版本：${version || 'N/A'}</li> <br><br>
