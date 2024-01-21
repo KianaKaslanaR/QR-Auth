@@ -4,7 +4,7 @@ body {
   background: url('background.png') center/cover fixed no-repeat; /* 修改背景显示方式 */
 }
 
-p, h2 {
+li, h2 {
   display: inline;
   margin: 0;
  }
@@ -14,4 +14,4 @@ p, h2 {
   padding: 20px;
   max-width: 600px; /* 设置最大宽度，使内容不过分拉宽 */
   margin: auto; /* 居中显示 */
-}
+ }
