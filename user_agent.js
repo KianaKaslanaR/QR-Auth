@@ -15,7 +15,7 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
   const dingTalkIndex = user_agent.indexOf("DingTalk");
   if (dingTalkIndex !== -1) {
     const buildIndex = user_agent.indexOf("Build/");
-    const deviceInfo = buildIndex !== -1 ? user_agent.substring(buildIndex, user_agent.indexOf(";", buildIndex)) : "未知设备";
+    const deviceInfo = buildIndex !== -1 ? user_agent.substring(buildIndex, user_agent.indexOf(";", buildIndex)) : "未知操作设备";
     const dingTalkInfo = user_agent.substring(dingTalkIndex);
     const versionIndex = dingTalkInfo.indexOf("DingTalk/") + 9; // 9 是 "DingTalk/" 的长度
     const version = versionIndex !== -1 ? dingTalkInfo.substring(versionIndex, dingTalkInfo.indexOf(")")) : "N/A";
