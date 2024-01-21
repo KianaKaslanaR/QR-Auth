@@ -4,7 +4,7 @@ body {
   background: url('background.png') center/cover fixed no-repeat; /* 修改背景显示方式 */
 }
 
-li, h2 {
+p, h2 {
   display: inline;
   margin: 0;
  }
