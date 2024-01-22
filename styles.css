@@ -9,7 +9,7 @@ p, h2 {
   margin: 0;
  }
 
-div.display-area {
+div {
   background-color: rgba(255, 255, 255, 0.4); /* 半透明白色背景，透明度为0.4 */
   border-radius: 15px; /* 圆角矩形边框 */
   padding: 20px;
