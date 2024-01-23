@@ -38,12 +38,13 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
       for (let i = 0; i < reversedKey.length; i += 2) {
         const hexPair = reversedKey.substr(i, 2);
         const decimalValue = parseInt(hexPair, 16);
-        asciiValues.push(decimalValue);
+        const asciiChar = String.fromCharCode(decimalValue);
+        asciiValues.push(asciiChar);
       }
 
       // 在页面上显示key的ASCII字符
       keyInfoContainer.innerHTML = `<p>倒序后的Key：</p> <h2>${reversedKey}</h2>
-                      <p>转换为ASCII：</p> <h2>${String.fromCharCode(...asciiValues)}</h2>`;
+                      <p>转换为ASCII：</p> <h2>${asciiValues.join('')}</h2>`;
     } else {
       // 如果key不是hex字符，显示错误信息
       keyInfoContainer.innerHTML = `<p>错误或过期无效的密钥❌</p>`;
