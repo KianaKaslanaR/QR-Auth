@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: url('background.png') center/cover fixed no-repeat; /* 修改背景显示方式 */
+  background: url('background.jpg') center/cover fixed no-repeat; /* 修改背景显示方式 */
 }
 
 p, h2 {
