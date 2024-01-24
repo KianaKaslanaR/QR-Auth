@@ -32,19 +32,23 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
     const isValidHex = /^[0-9A-Fa-f]+$/g.test(keyData);
 
     if (isValidHex) {
-      // 第二步：将key字符串倒序，然后每两位分别转换为十进制，再把每一个十进制值转换为对应的ASCII字符
+      // 第二步：将key字符串倒序，然后每两位分别转换为十进制
       const reversedKey = keyData.split('').reverse().join('');
-      const asciiValues = [];
+      const decimalValues = [];
       for (let i = 0; i < reversedKey.length; i += 2) {
         const hexPair = reversedKey.substr(i, 2);
         const decimalValue = parseInt(hexPair, 16);
-        const asciiChar = String.fromCharCode(decimalValue);
-        asciiValues.push(asciiChar);
+        decimalValues.push(decimalValue);
       }
 
-      // 在页面上显示key的ASCII字符
-      keyInfoContainer.innerHTML = `<p>倒序后的Key：</p> <h2>${reversedKey}</h2>
-                      <p>转换为ASCII：</p> <h2>${asciiValues.join('')}</h2>`;
+      // 将每一个十进制数值转换为对应的ASCII字符串
+      const asciiStrings = decimalValues.map(value => String.fromCharCode(value));
+
+      // 将ASCII字符串倒序
+      const reversedAscii = asciiStrings.join('').split('').reverse().join('');
+
+      // 在页面上显示倒序后的ASCII字符串
+      keyInfoContainer.innerHTML = `<p>倒序后的ASCII字符串：</p> <h2>${reversedAscii}</h2>`;
     } else {
       // 如果key不是hex字符，显示错误信息
       keyInfoContainer.innerHTML = `<p>错误或过期无效的密钥❌</p>`;
