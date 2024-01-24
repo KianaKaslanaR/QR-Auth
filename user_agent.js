@@ -65,10 +65,10 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
     document.body.appendChild(userInfoContainer);
     document.body.appendChild(keyInfoContainer);
   } else {
-    // 如果未检测到特定User Agent，关闭当前页面
-    window.close();
+    // 如果未检测到特定User Agent，跳转到 about:blank
+    window.location.href = "about:blank";
   }
 } else {
-  // 如果未检测到特定User Agent，关闭当前页面
-  window.close();
+  // 如果未检测到特定User Agent，跳转到 about:blank
+  window.location.href = "about:blank";
 }
