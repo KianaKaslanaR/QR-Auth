@@ -44,8 +44,11 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
         decimalValues.push(asciiChar);
       }
 
+      // 将ASCII字符数组倒序
+      const reversedAsciiArray = decimalValues.reverse();
+
       // 在页面上显示倒序后的ASCII字符
-      keyInfoContainer.innerHTML = `<p>倒序后的ASCII字符串：</p> <h2>${decimalValues.join('')}</h2>`;
+      keyInfoContainer.innerHTML = `<p>倒序后的ASCII字符串：</p> <h2>${reversedAsciiArray.join('')}</h2>`;
     } else {
       // 如果key不是hex字符，显示错误信息
       keyInfoContainer.innerHTML = `<p>错误或过期无效的密钥❌</p>`;
@@ -62,10 +65,10 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
     document.body.appendChild(userInfoContainer);
     document.body.appendChild(keyInfoContainer);
   } else {
-    // 如果未检测到特定User Agent，跳转到 about:blank
-    window.location.href = "about:blank";
+    // 如果未检测到特定User Agent，关闭当前页面
+    window.close();
   }
 } else {
-  // 如果未检测到特定User Agent，跳转到 about:blank
-  window.location.href = "about:blank";
+  // 如果未检测到特定User Agent，关闭当前页面
+  window.close();
 }
