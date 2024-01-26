@@ -32,12 +32,12 @@ if (user_agent.includes("com.alibaba.android.rimet")) {
     const isValidHex = /^[0-9A-Fa-f]+$/g.test(keyData);
 
     if (isValidHex) {
-      // 第二步：将key字符串倒序，然后每两位分别转换为十进制
+      // 第二步：将key字符串倒序，然后每三位分别转换为十进制
       const reversedKey = keyData.split('').reverse().join('');
       const decimalValues = [];
-      for (let i = 0; i < reversedKey.length; i += 2) {
-        const hexPair = reversedKey.substr(i, 2);
-        const decimalValue = parseInt(hexPair, 16);
+      for (let i = 0; i < reversedKey.length; i += 3) {
+        const hexTriplet = reversedKey.substr(i, 3);
+        const decimalValue = parseInt(hexTriplet, 16);
         // 将每一个十进制数值进行倒序，再转换为对应的ASCII字符
         const reversedAscii = decimalValue.toString().split('').reverse().join('');
         const asciiChar = String.fromCharCode(parseInt(reversedAscii, 10));
