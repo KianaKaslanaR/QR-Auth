@@ -1,18 +1,28 @@
+/* styles.css 文件内容 */
 body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  padding: 0;
-  background: url('background.jpg') center/cover fixed no-repeat; /* 修改背景显示方式 */
 }
 
-p, h2 {
-  display: inline;
-  margin: 0;
- }
-
-div {
-  background-color: rgba(255, 255, 255, 0.4); /* 半透明白色背景，透明度为0.4 */
-  border-radius: 15px; /* 圆角矩形边框 */
+.user-agent-box {
+  background-color: white;
   padding: 20px;
-  max-width: 600px; /* 设置最大宽度，使内容不过分拉宽 */
-  margin: auto; /* 居中显示 */
- }
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 600px;
+}
+
+.user-agent-box h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.user-agent-box p {
+  font-size: 16px;
+  margin-top: 10px;
+}
