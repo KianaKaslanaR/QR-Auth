@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Auth</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div>
-    <script src="user_agent.js"></script>
-  </div>
-</body>
+<html lang="cn">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>QR-Auth</title>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<div class="user-agent-box">
+  			<h1>Your UserAgent</h1>
+  			<p id="userAgent"></p>
+			<h2>Developer Name:</h2>
+  			<p id="devName"></p>
+  			<h2>Key:</h2>
+  			<p id="key"></p>
+		</div>
+		
+		<script type="module" src="main.js"></script>
+	</body>
 </html>
